@@ -1,0 +1,2 @@
+PROCESSED_RESUMES_PATH = "Data/Resumes"
+PROCESSED_JOB_DESCRIPTIONS_PATH = "Data/JobDescription"
