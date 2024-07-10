@@ -43,12 +43,6 @@ def find_path(folder_name):
     raise ValueError(f"Folder '{folder_name}' not found.")
 
 
-cwd = find_path("Resume-Matcher")
-READ_RESUME_FROM = os.path.join(cwd, "Data", "Processed", "Resumes")
-READ_JOB_DESCRIPTION_FROM = os.path.join(cwd, "Data", "Processed", "JobDescription")
-config_path = os.path.join(cwd, "scripts", "similarity")
-
-
 def read_config(filepath):
     """
     Reads a configuration file in YAML format and returns the parsed configuration.
@@ -118,7 +112,6 @@ class QdrantSearch:
         likely used as input to compare against the resumes provided in the `resumes` parameter. The job
         description is probably used for matching and analyzing against the resumes in the system.
         """
-        config = read_config(config_path + "/config.yml")
         self.cohere_key = config["cohere"]["api_key"]
         self.qdrant_key = config["qdrant"]["api_key"]
         self.qdrant_url = config["qdrant"]["url"]
@@ -238,24 +231,3 @@ def get_similarity_score(resume_string, job_description_string):
     search_result = qdrant_search.search()
     logger.info("Finished getting similarity score")
     return search_result
-
-
-if __name__ == "__main__":
-    # To give your custom resume use this code
-    resume_dict = read_config(
-        READ_RESUME_FROM
-        + "/Resume-bruce_wayne_fullstack.pdf4783d115-e6fc-462e-ae4d-479152884b28.json"
-    )
-    job_dict = read_config(
-        READ_JOB_DESCRIPTION_FROM
-        + "/JobDescription-job_desc_full_stack_engineer_pdf4de00846-a4fe-4fe5-a4d7"
-        "-2a8a1b9ad020.json"
-    )
-    resume_keywords = resume_dict["extracted_keywords"]
-    job_description_keywords = job_dict["extracted_keywords"]
-
-    resume_string = " ".join(resume_keywords)
-    jd_string = " ".join(job_description_keywords)
-    final_result = get_similarity_score(resume_string, jd_string)
-    for r in final_result:
-        print(r)

@@ -2,7 +2,7 @@ import logging
 import os
 from linkedin_api import Linkedin
 from linkedin_api.utils.helpers import generate_random_id
-from config import PROCESSED_JOB_DESCRIPTIONS_PATH, PROCESSED_RESUMES_PATH
+from config import JOB_DESCRIPTIONS_PATH, RESUMES_PATH
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ job_location = "New York, NY"
 job_type = "Full-time"
 
 # Upload the job description PDF to LinkedIn
-job_pdf_id = api.upload_file(PROCESSED_JOB_DESCRIPTIONS_PATH)
+job_pdf_id = api.upload_file(JOB_DESCRIPTIONS_PATH)
 
 # Post the job on LinkedIn
 try:
@@ -45,6 +45,6 @@ for applicant in applicants:
     print(f"Applicant ID: {applicant_id}, CV URL: {cv_url}")
 
     # Download the CV/Resume and save it to the specified directory
-    cv_filename = os.path.join(PROCESSED_RESUMES_PATH, f"{applicant_id}.pdf")
+    cv_filename = os.path.join(RESUMES_PATH, f"{applicant_id}.pdf")
     api.download_file(cv_url, cv_filename)
     print(f"CV saved: {cv_filename}")

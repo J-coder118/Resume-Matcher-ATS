@@ -9,7 +9,6 @@ from scripts.utils.Utils import CountFrequency, TextCleaner, generate_unique_id
 
 SAVE_DIRECTORY = "../../Data/Processed/Resumes"
 
-
 class ParseResume:
 
     def __init__(self, resume: str):
@@ -49,3 +48,5 @@ class ParseResume:
         }
 
         return resume_dictionary
+
+

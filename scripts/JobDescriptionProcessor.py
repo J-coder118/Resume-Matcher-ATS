@@ -8,7 +8,6 @@ from .ReadPdf import read_single_pdf
 READ_JOB_DESCRIPTION_FROM = "Data/JobDescription/"
 SAVE_DIRECTORY = "Data/Processed/JobDescription"
 
-
 class JobDescriptionProcessor:
     def __init__(self, input_file):
         self.input_file = input_file

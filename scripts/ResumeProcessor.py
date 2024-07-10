@@ -8,7 +8,6 @@ from .ReadPdf import read_single_pdf
 READ_RESUME_FROM = "Data/Resumes/"
 SAVE_DIRECTORY = "Data/Processed/Resumes"
 
-
 class ResumeProcessor:
     def __init__(self, input_file):
         self.input_file = input_file

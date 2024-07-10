@@ -5,7 +5,6 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
-
 class TextCleaner:
 
     def __init__(self, raw_text):

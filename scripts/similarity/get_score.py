@@ -43,13 +43,6 @@ def find_path(folder_name):
             curr_dir = parent_dir
     raise ValueError(f"Folder '{folder_name}' not found.")
 
-
-cwd = find_path("Resume-Matcher")
-READ_RESUME_FROM = os.path.join(cwd, "Data", "Processed", "Resumes")
-READ_JOB_DESCRIPTION_FROM = os.path.join(cwd, "Data", "Processed", "JobDescription")
-config_path = os.path.join(cwd, "scripts", "similarity")
-
-
 def read_config(filepath):
     """
     The `read_config` function reads a configuration file in YAML format and handles exceptions related
@@ -139,21 +132,3 @@ def get_score(resume_string, job_description_string):
     return search_result
 
 
-if __name__ == "__main__":
-    # To give your custom resume use this code
-    resume_dict = read_config(
-        READ_RESUME_FROM
-        + "/Resume-alfred_pennyworth_pm.pdf83632b66-5cce-4322-a3c6-895ff7e3dd96.json"
-    )
-    job_dict = read_config(
-        READ_JOB_DESCRIPTION_FROM
-        + "/JobDescription-job_desc_product_manager.pdf6763dc68-12ff-4b32-b652-ccee195de071.json"
-    )
-    resume_keywords = resume_dict["extracted_keywords"]
-    job_description_keywords = job_dict["extracted_keywords"]
-
-    resume_string = " ".join(resume_keywords)
-    jd_string = " ".join(job_description_keywords)
-    final_result = get_score(resume_string, jd_string)
-    for r in final_result:
-        print(r.score)

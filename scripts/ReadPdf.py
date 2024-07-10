@@ -3,7 +3,6 @@ import os
 
 from pypdf import PdfReader
 
-
 def get_pdf_files(file_path):
     """
     Get all PDF files from the specified file path.

@@ -3,7 +3,7 @@ import logging
 import os
 from scripts import JobDescriptionProcessor, ResumeProcessor
 from scripts.utils import get_filenames_from_dir, init_logging_config
-from config import PROCESSED_JOB_DESCRIPTIONS_PATH, PROCESSED_RESUMES_PATH
+from config import JOB_DESCRIPTIONS_PATH, RESUMES_PATH
 
 init_logging_config()
 
@@ -11,7 +11,6 @@ def read_json(filename):
     with open(filename) as f:
         data = json.load(f)
     return data
-
 
 def remove_old_files(files_path):
 
@@ -31,7 +30,7 @@ logging.info("Started to read from Data/Resumes")
 try:
     # Check if there are resumes present or not.
     # If present then parse it.
-    remove_old_files(PROCESSED_RESUMES_PATH)
+    remove_old_files(RESUMES_PATH)
 
     file_names = get_filenames_from_dir("Data/Resumes")
     logging.info("Reading from Data/Resumes is now complete.")
@@ -53,7 +52,7 @@ logging.info("Started to read from Data/JobDescription")
 try:
     # Check if there are resumes present or not.
     # If present then parse it.
-    remove_old_files(PROCESSED_JOB_DESCRIPTIONS_PATH)
+    remove_old_files(JOB_DESCRIPTIONS_PATH)
 
     file_names = get_filenames_from_dir("Data/JobDescription")
     logging.info("Reading from Data/JobDescription is now complete.")

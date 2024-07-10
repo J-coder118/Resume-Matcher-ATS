@@ -18,7 +18,6 @@ IMPORTANT: Make sure the URL is to the actual job description,
 and not the job search page.
 """
 
-
 def linkedin_to_pdf(job_url: str):
 
     job_path = "Data/JobDescription/"

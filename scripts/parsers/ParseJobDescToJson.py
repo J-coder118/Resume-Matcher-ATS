@@ -8,7 +8,6 @@ from scripts.utils.Utils import CountFrequency, TextCleaner, generate_unique_id
 
 SAVE_DIRECTORY = "../../Data/Processed/JobDescription"
 
-
 class ParseJobDesc:
 
     def __init__(self, job_desc: str):
@@ -38,3 +37,6 @@ class ParseJobDesc:
         }
 
         return job_desc_dictionary
+
+
+

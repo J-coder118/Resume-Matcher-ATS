@@ -8,7 +8,6 @@ from .utils import TextCleaner
 # Load the English model
 nlp = spacy.load("en_core_web_sm")
 
-
 RESUME_SECTIONS = [
     "Contact Information",
     "Objective",
@@ -220,3 +219,5 @@ class DataExtractor:
             token.text for token in self.doc.ents if token.label_ in entity_labels
         ]
         return list(set(entities))
+
+
